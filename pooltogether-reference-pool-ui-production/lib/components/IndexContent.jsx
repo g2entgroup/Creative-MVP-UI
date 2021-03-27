@@ -270,7 +270,7 @@ const GovernancePoolsCard = (props) => {
   return (
     <Card>
       <Collapse
-        title='🏆 Governance Pools'
+        title='🏆 Voting Pools'
         containerClassName='mb-4 xs:mb-8'
         headerMarginClassName='mb-4'
         renderCustomIcon={({ showContent }) => (
@@ -377,7 +377,7 @@ const AllPoolsCard = (props) => {
   return (
     <Card>
       <Collapse
-        title='🤿 All Pools'
+        title='🤿 Brand Pools'
         containerClassName='mb-4 xs:mb-8'
         headerMarginClassName='mb-4'
         renderCustomIcon={({ showContent }) => (

@@ -49,9 +49,9 @@ export const WalletInfo = () => {
         <button
           onClick={() => _onboard.walletReset()}
           className={classnames(
-            'text-lightPurple-500 hover:text-white trans ml-2 outline-none focus:outline-none',
+            'text-orange-500 hover:text-white trans ml-2 outline-none focus:outline-none',
             'block border rounded-full w-4 h-4 sm:w-5 sm:h-5 text-center text-lg',
-            'border-purple-700 hover:bg-lightPurple-700',
+            'border-orange-700 hover:bg-orange-700',
             'trans'
           )}
         >

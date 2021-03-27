@@ -2,13 +2,13 @@ import Head from 'next/head'
 
 export const Meta = (props) => {
   let { title } = props
-  const defaultTitle = 'PoolTogether - Community Pools'
+  const defaultTitle = 'Creative - Community Pools'
   title = title ? `${title} - ${defaultTitle}` : defaultTitle
 
-  const url = `https://community.pooltogether.com`
+  const url = `https://community.creativeplatform.io`
   const description = `View, deposit and withdraw for all V3 Pools`
   const keywords = 'ethereum'
-  const twitterHandle = '@PoolTogether_'
+  const twitterHandle = '@creativecrtv'
 
   return (
     <>
@@ -18,14 +18,14 @@ export const Meta = (props) => {
         <meta name='viewport' content='width=device-width,initial-scale=1,shrink-to-fit=no' />
         <meta charSet='utf-8' />
 
-        <link rel='icon' type='image/png' href='/favicon.png' />
+        <link rel='icon' type='image/x-icon' href='/tokenlogo.ico' />
 
         <link rel='stylesheet' href='/animate.css' />
 
         <meta name='theme-color' content='#1a083a' />
         <meta name='description' content={description} />
         <meta name='keywords' content={keywords} />
-        <meta name='author' content='PoolTogether' />
+        <meta name='author' content='Creative' />
 
         <meta property='og:title' content={title} />
         <meta property='og:description' content={description} />

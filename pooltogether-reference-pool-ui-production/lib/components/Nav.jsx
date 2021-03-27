@@ -30,7 +30,7 @@ export const Nav = (props) => {
                   src={CreativeCLogo}
                   className='mr-auto lg:m-0 w-24 hidden sm:block'
                 />
-                <span><h1 className='text-accent-1 title text-md sm:text-4xl hidden sm:block'>CREATIVE.</h1></span>
+                <span><h1 className='text-accent-1 mt-2 title text-md sm:text-4xl hidden sm:block'>CREATIVE.</h1></span>
                 <img
                   alt={`Creative Play Logo`}
                   src={CreativeCLogo}

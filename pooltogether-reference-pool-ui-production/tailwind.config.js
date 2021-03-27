@@ -323,6 +323,12 @@ module.exports = {
     boxShadow: ['focus-within', 'focus', 'active'],
     backgroundOpacity: ['hover', 'focus', 'active']
   },
+  future : {
+    defaultLineHeights: true,
+    removeDeprecatedGapUtilities: true,
+    purgeLayersByDefault: true,
+    standardFontWeights: true,
+  },
   plugins: [],
   purge: false
 }

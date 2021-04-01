@@ -1,4 +1,4 @@
-import { QUERY_KEYS } from 'lib/constants'
+import { NO_REFETCH_QUERY_OPTIONS, QUERY_KEYS } from 'lib/constants'
 import { useAllCreatedPrizePools } from 'lib/hooks/useAllCreatedPrizePools'
 import { useReadProvider } from 'lib/hooks/useReadProvider'
 import { useQuery } from 'react-query'
@@ -9,17 +9,18 @@ import { batch, contract } from '@pooltogether/etherplex'
 import { useNetwork } from 'lib/hooks/useNetwork'
 
 export const useAllCreatedPrizePoolsWithTokens = () => {
-  const [chainId] = useNetwork()
+  const { chainId } = useNetwork()
   const { data: prizePools, isFetched: createdPrizePoolsIsFetched } = useAllCreatedPrizePools()
   const { readProvider: provider, isLoaded: readProviderIsLoaded } = useReadProvider()
 
   return useQuery(
     [QUERY_KEYS.useAllCreatedPrizePoolsWithTokens, prizePools, chainId],
-    async () => getAllCreatedPrizePoolsWithTokens(provider, prizePools, chainId),
+    async () => await getAllCreatedPrizePoolsWithTokens(provider, prizePools, chainId),
+    // @ts-ignore
     {
+      ...NO_REFETCH_QUERY_OPTIONS,
       enabled: readProviderIsLoaded && createdPrizePoolsIsFetched,
-      refetchInterval: false,
-      refetchOnWindowFocus: false
+      staleTime: Infinity
     }
   )
 }

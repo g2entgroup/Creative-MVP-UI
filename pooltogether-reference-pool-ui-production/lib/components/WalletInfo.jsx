@@ -2,9 +2,9 @@ import React, { useContext } from 'react'
 import classnames from 'classnames'
 import FeatherIcon from 'feather-icons-react'
 
+import { NETWORKS } from 'lib/constants'
 import { WalletContext } from 'lib/components/WalletContextProvider'
-import { networkColorClassname } from 'lib/utils/networkColorClassname'
-import { chainIdToName } from 'lib/utils/chainIdToName'
+import { chainIdToName, networkColorClassname } from 'lib/utils/networks'
 import { shorten } from 'lib/utils/shorten'
 
 export const WalletInfo = () => {
@@ -23,12 +23,18 @@ export const WalletInfo = () => {
   }
 
   let innerContent = null
-  let networkName = null
+  let networkNameJsx = null
 
   if (chainId && chainId !== 1) {
-    networkName = (
+    let networkName = chainIdToName(chainId)
+    const formattedNetworkName = NETWORKS[networkName]?.view
+    if (formattedNetworkName) {
+      networkName = NETWORKS[networkName]?.view
+    }
+
+    networkNameJsx = (
       <span className={classnames(networkColorClassname(chainId), 'inline-block')}>
-        {chainIdToName(chainId)}
+        {networkName}
       </span>
     )
   }
@@ -41,17 +47,17 @@ export const WalletInfo = () => {
             {shorten(address)}
           </span>
 
-          <span className='block sm:inline-block rounded-lg text-default capitalize'>
-            {walletName} {networkName}
+          <span className='block sm:inline-block rounded-lg text-default'>
+            {walletName} {networkNameJsx}
           </span>
         </div>
 
         <button
           onClick={() => _onboard.walletReset()}
           className={classnames(
-            'text-orange-500 hover:text-white trans ml-2 outline-none focus:outline-none',
+            'text-lightPurple-500 hover:text-white trans ml-2 outline-none focus:outline-none',
             'block border rounded-full w-4 h-4 sm:w-5 sm:h-5 text-center text-lg',
-            'border-orange-700 hover:bg-orange-700',
+            'border-purple-700 hover:bg-lightPurple-700',
             'trans'
           )}
         >

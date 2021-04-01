@@ -5,8 +5,8 @@ import { ConnectWalletButton } from 'lib/components/ConnectWalletButton'
 import { WalletContext } from 'lib/components/WalletContextProvider'
 import { WalletInfo } from 'lib/components/WalletInfo'
 
-import CreativeLogo from 'assets/images/CreativeToken_Logo-wht.svg'
-import CreativeCLogo from 'assets/images/Creative-Icon.svg'
+import PoolLogo from 'assets/images/pooltogether-logo.svg'
+import PoolPLogo from 'assets/images/pooltogether-white-mark.svg'
 
 export const Nav = (props) => {
   const walletContext = useContext(WalletContext)
@@ -26,14 +26,13 @@ export const Nav = (props) => {
             <Link href='/' as='/'>
               <a title={'Back to home'} className='border-0'>
                 <img
-                  alt={`Creative Logo`}
-                  src={CreativeCLogo}
-                  className='mr-auto lg:m-0 w-24 hidden sm:block'
+                  alt={`PoolTogether Logo`}
+                  src={PoolLogo}
+                  className='mr-auto lg:m-0 w-32 hidden sm:block'
                 />
-                <span><h1 className='text-accent-1 mt-2 title text-md sm:text-4xl hidden sm:block'>CREATIVE.</h1></span>
                 <img
-                  alt={`Creative Play Logo`}
-                  src={CreativeCLogo}
+                  alt={`PoolTogether P Logo`}
+                  src={PoolPLogo}
                   className='mr-auto lg:m-0 w-6 block sm:hidden'
                 />
               </a>

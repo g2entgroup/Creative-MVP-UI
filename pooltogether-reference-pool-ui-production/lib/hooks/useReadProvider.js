@@ -1,26 +1,23 @@
-import { useEffect, useState } from 'react'
+import { useQuery } from 'react-query'
 
 import { readProvider } from 'lib/services/readProvider'
 import { useNetwork } from 'lib/hooks/useNetwork'
+import { QUERY_KEYS } from 'lib/constants'
 
 export const useReadProvider = () => {
-  const [defaultReadProvider, setDefaultReadProvider] = useState({})
-  const [chainId, networkName] = useNetwork()
+  const { chainId, name: networkName } = useNetwork()
 
-  useEffect(() => {
-    const getReadProvider = async () => {
-      const defaultReadProvider = await readProvider(networkName)
-
-      setDefaultReadProvider(defaultReadProvider)
-    }
-    getReadProvider()
-  }, [networkName])
+  const { data: defaultReadProvider, isFetched } = useQuery(
+    [QUERY_KEYS.readProvider, networkName],
+    () => readProvider(networkName)
+  )
 
   const isLoaded =
     defaultReadProvider &&
     networkName &&
+    isFetched &&
     Object.keys(defaultReadProvider).length > 0 &&
-    defaultReadProvider.network.chainId === chainId
+    defaultReadProvider?.network?.chainId === chainId
 
   return {
     readProvider: defaultReadProvider,

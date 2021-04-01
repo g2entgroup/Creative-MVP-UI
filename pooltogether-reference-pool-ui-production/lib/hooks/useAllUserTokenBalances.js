@@ -1,9 +1,9 @@
 import { batch, contract } from '@pooltogether/etherplex'
-import { QUERY_KEYS } from 'lib/constants'
+import { NO_REFETCH_QUERY_OPTIONS, QUERY_KEYS } from 'lib/constants'
 import { useAllCreatedPrizePoolsWithTokens } from 'lib/hooks/useAllCreatedPrizePoolsWithTokens'
 import { useReadProvider } from 'lib/hooks/useReadProvider'
 import { useQuery } from 'react-query'
-import ERC20Abi from 'ERC20Abi'
+import ERC20Abi from 'abis/ERC20Abi'
 import { WalletContext } from 'lib/components/WalletContextProvider'
 import { useContext } from 'react'
 import { ethers } from 'ethers'
@@ -16,11 +16,11 @@ export const useAllUserTokenBalances = () => {
 
   return useQuery(
     [QUERY_KEYS.useAllUserTokenBalances, prizePools, usersAddress],
-    async () => getAllUserTokenBalances(provider, prizePools, usersAddress),
+    async () => await getAllUserTokenBalances(provider, prizePools, usersAddress),
+    // @ts-ignore
     {
+      ...NO_REFETCH_QUERY_OPTIONS,
       enabled: readProviderIsLoaded && prizePoolsIsFetched,
-      refetchInterval: false,
-      refetchOnWindowFocus: false,
       staleTime: Infinity
     }
   )
